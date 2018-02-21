@@ -6,7 +6,7 @@ import re
 import urllib
 
 class SchokotronCaralho(object):
-    ROBOT_ADDRESS = "http://172.19.96.43:5000"
+    ROBOT_ADDRESS = "http://127.0.0.1:5000"
     API_ADDRESS = ""
 
     def __init__(self, logger, slack_client, slack_username):
@@ -100,7 +100,7 @@ class SchokotronCaralho(object):
 
     def serve_chocolat(self, channel_id):
         try:
-            urllib.urlopen(self.ROBOT_ADDRESS + "/candies").read()
+            urllib.request.urlopen(self.ROBOT_ADDRESS + "/candies").read()
             self.send_message("Toma o teu chocolate gordo(a).", channel_id)
         except Exception as description:
             self.logger.error("Something went wrong! Here are some details:")
