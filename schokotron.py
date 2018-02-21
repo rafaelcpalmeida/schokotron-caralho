@@ -3,8 +3,7 @@
 
 import time
 import re
-import urllib2
-
+import urllib
 
 class SchokotronCaralho(object):
     ROBOT_ADDRESS = "http://172.19.96.43:5000"
@@ -46,7 +45,7 @@ class SchokotronCaralho(object):
                     self.send_message("`Dá-me a puta de um chocolate seu filho da puta, caralho!`", channel_id)
                     return
 
-                if re.match( r'(dá-me|quero).*(chocolate).*(caralho)', event["text"].encode('utf-8'), re.M|re.I):
+                if re.match( r'(dá-me|quero).*(chocolate).*(caralho)', event["text"], re.M|re.I):
                     self.perform_action("serve_chocolat", channel_id)
                     #self.send_message("O(A) gordo(a) do(a) @" + user_details["username"] + " acabou de comer mais um chocolate!", "#random")
                     return
@@ -101,7 +100,7 @@ class SchokotronCaralho(object):
 
     def serve_chocolat(self, channel_id):
         try:
-            urllib2.urlopen(self.ROBOT_ADDRESS + "/candies").read()
+            urllib.urlopen(self.ROBOT_ADDRESS + "/candies").read()
             self.send_message("Toma o teu chocolate gordo(a).", channel_id)
         except Exception as description:
             self.logger.error("Something went wrong! Here are some details:")
