@@ -1,0 +1,24 @@
+
+import RPi.GPIO as GPIO
+from time import sleep
+
+class Candy:
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BOARD)
+
+    def __init__(self, gpio):
+        print("Starting the Mighty Schokotron, caralho")
+        self.gpio = gpio
+        self.gpio.setup(3, gpio.OUT)
+        self.pwm = self.gpio.PWM(3, 50)
+        self.pwm.start(0)
+
+    def set_duty_cycle(self, duty):
+        self.gpio.output(3, True)
+        self.pwm.ChangeDutyCycle(duty)
+        sleep(1)
+        self.gpio.output(3, False)
+        self.pwm.ChangeDutyCycle(0)
+
+#c = Candy(GPIO)
+
