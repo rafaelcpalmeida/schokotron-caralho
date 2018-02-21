@@ -7,7 +7,7 @@ import urllib2
 
 
 class SchokotronCaralho(object):
-    ROBOT_ADDRESS = ""
+    ROBOT_ADDRESS = "http://172.19.96.43:5000"
     API_ADDRESS = ""
 
     def __init__(self, logger, slack_client, slack_username):

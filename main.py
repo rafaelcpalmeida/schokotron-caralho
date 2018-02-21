@@ -2,13 +2,12 @@
 # -*- coding: utf-8 -*-
 
 from slackclient import SlackClient
+from schokotron import SchokotronCaralho
+
 import os
 import logging
 
-from schokotron import SchokotronCaralho
-
 if __name__ == "__main__":
-    # Inject this has a dependency
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
 
